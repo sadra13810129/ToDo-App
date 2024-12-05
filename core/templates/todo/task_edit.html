@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Task</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .modal-header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .modal-content {
+            border-radius: 15px;
+        }
+
+        .btn-custom {
+            border-radius: 25px;
+            padding: 10px 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .modal-body p {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            border-radius: 25px;
+            width: 100%; /* Ensures the input field takes full width */
+        }
+
+        .input-group {
+            margin-bottom: 20px; /* Space between input and button */
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%; /* Button takes full width */
+            margin-top: 10px; /* Space between the field and button */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Task</h5>
+                <a href="{% url 'todo:task-list' %}"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <!-- Title Field -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="title" value="{{ task.title }}" required>
+                    </div>
+
+                    <!-- Save Changes Button (separated vertically from the title field) -->
+                    <button type="submit" class="btn btn-primary btn-submit">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>
